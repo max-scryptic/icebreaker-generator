@@ -1,0 +1,10 @@
+__pycache__/
+.pycache/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.git
+sample_leads.csv
+leads_with_icebreakers.csv

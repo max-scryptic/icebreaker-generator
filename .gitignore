@@ -1,0 +1,7 @@
+__pycache__/
+.pycache/
+*.pyc
+.DS_Store
+.env
+sample_leads.csv
+leads_with_icebreakers.csv
