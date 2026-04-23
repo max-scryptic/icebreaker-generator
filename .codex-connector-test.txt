@@ -1,2 +1,0 @@
-Codex GitHub connector write test.
-Created to verify repository write access from the in-house connector.
