@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: icebreaker-generator
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 -m uvicorn api_server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ICEBREAKER_API_TOKEN
+        generateValue: true
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini

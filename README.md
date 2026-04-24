@@ -7,6 +7,7 @@ This project includes:
 - bearer-token auth for your endpoint
 - structured JSON error responses
 - a Dockerfile for local deployment or hosting
+- a `render.yaml` blueprint for Render deployment
 
 ## Expected CSV headers
 
@@ -155,6 +156,24 @@ curl -X POST http://127.0.0.1:8000/icebreaker \
   -H "Content-Type: application/json" \
   -d '{"Business Name":"Test Co","Website":"https://example.com"}'
 ```
+
+## Deploy To Render
+
+This repo includes a [render.yaml](./render.yaml) blueprint, so Render can deploy it directly from GitHub.
+
+On Render:
+
+1. Create a new Blueprint or Web Service from this GitHub repo
+2. Point it at the `icebreaker-generator` repository
+3. Confirm the service settings from `render.yaml`
+4. Set `OPENAI_API_KEY` in Render's environment variables
+5. Keep the generated `ICEBREAKER_API_TOKEN` or replace it with your own value
+
+Render will use:
+
+- Build command: `pip install -r requirements.txt`
+- Start command: `python3 -m uvicorn api_server:app --host 0.0.0.0 --port $PORT`
+- Health check: `/health`
 
 ## Notes
 
